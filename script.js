@@ -23,6 +23,7 @@ var questionArray = [question1, question2, question3, question4];
 // this is the array containing each of the question objects. 
 var startBtn = document.getElementById("start-button")
 var startPage = document.getElementById("start-page")
+var questionDiv = document.getElementById("question-div")
 var hiddenDiv = document.getElementById("correct-wrong")
 
 
@@ -62,5 +63,7 @@ var question4 = {
 
 startBtn.addEventListener("click", function(){
     startPage.setAttribute("style", "display: none")
-
+    
+    questionDiv.textContent = "this is a test of question div"
+    hiddenDiv.textContent = "this is a test of hidden div"
 })
