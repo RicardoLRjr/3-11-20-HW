@@ -19,7 +19,29 @@ var seconds = 75;
 var time = document.getElementById("time")
 // this is the score/time element featured in the top right corner. It ticks down at rate of one per second
 // and will go down by 10 immediately if question is wrong.
-var questionArray = [question1, question2, question3, question4];
+var questionsArr = [
+    {
+        question: 'What is Javascript?',
+        answers: ["A programming language","A form of writing which uses coffee beans", 
+        "A content delivery network", "The script for a play about the island of Java"],
+        answer: 'A programming language'
+    },
+    {
+        question: 'What does HTML stand for?',
+        answers: ["Hyper Tax Man Larry","Highly Technical Managing Language", "Hyper Text Markup Language", "Half To Mario Link"],
+        answer: 'Hyper Text Markup Language'
+    },{
+        question: 'What is not an example of a Content Delivery Network?',
+        answers: ["Bootstrap","Cloudflare", "Google", "Streamzilla"],
+        answer: 'Google'
+    },
+    {
+        question: 'What should you do first when coding?',
+        answers: ["Code the entire project", "Pseudocode", "Buy coffee", 
+        "Question your ability to code correctly"],
+        answer: 'Pseudocode'
+    }
+]
 // this is the array containing each of the question objects. 
 var startBtn = document.getElementById("start-button");
 // refers to the start button
@@ -34,34 +56,9 @@ var scorescreen = document.getElementById("score-screen")
 var submitScore = document.getElementById("score-submit")
 // refers to the submit-score button
 var NameValue = document.getElementById("exampleNameInput")
-// Objects:
-var question1 = {
-    True1:"Javascript",
-    True2:"CSS",
-    False:"Python",
-    True3:"HTML"
-}
+// Refers to the saved name/score value
+// Object:
 
-var question2 = {
-    True1:"Javascript",
-    True2:"CSS",
-    False:"Python",
-    True3:"HTML"
-}
-
-var question3 = {
-    True1:"Javascript",
-    True2:"CSS",
-    False:"Python",
-    True3:"HTML"
-}
-
-var question4 = {
-    True1:"Javascript",
-    True2:"CSS",
-    False:"Python",
-    True3:"HTML"
-}
 
 
 
@@ -89,19 +86,29 @@ function setTime() {
 startBtn.addEventListener("click", function() {
     startPage.setAttribute("style", "display: none");
 
-    questionDiv.setAttribute("style", "display: inline");
-    hiddenDiv.setAttribute("style", "display: inline");
+    questionDiv.setAttribute("style", "display: block");
+    hiddenDiv.setAttribute("style", "display: block");
 
-    
-
+    // questionA.textContent = TestA
+    // questionB.textContent = TestB
+    // questionC.textContent = TestC
+    // questionD.textContent = TestD
     setTime();
-    questionGame();
+    question1();
     
 })
 
-function questionGame() {
-    for (i = 0; i < questionArray.length; i++) {
-        
+function checkAnswer(){
+
+
+}
+
+function question1() {
+    var questionTitle = document.createElement('h2');
+    questionTitle.textContent = questionsArr[i].question;
+    questionDiv.append(questionTitle);
+    for (i = 0; i < questionsArr[i].answers.length; i++) {
+        console.log(questionTitle.textContent)
         // set variable? so that questionArray actually pulls out questions
         // set each point of the selected questionObject on its button
         // create if else syntax so that a click on the false answer = wrong dialogue,time being taken out,
@@ -112,6 +119,8 @@ function questionGame() {
         // time stop = clearInterval(timerInterval) method
         
 }}
+
+
 submitScore.addEventListener("click", function(event) {
 event.preventDefault();
 localStorage.setItem("Name Value", NameValue.value,);
