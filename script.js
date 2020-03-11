@@ -1,19 +1,18 @@
 // Pseudocode:
-// create nav bar with name of game, option to view scores, and remaining time.
+// create nav bar with name of game, option to view scores, and remaining time.!
 // done in html
-// create title page with button to start game(title page is all centered)
+// create title page with button to start game(title page is all centered)!
 
 // create modular button class to streamline question development
 // create hidden <div></div> with text that shows wrong or right depending on answer
 // include functionality so that button answers change
-// create objectArray, with wuestions as object
-// code individual question objects, with individual choices for each object
-// include ticking down clock in right corner, time taken with wrong answer
+// create objectArray, with questions as object!
+// code individual question objects, with individual choices for each object!
+// include ticking down clock in right corner, time taken with wrong answer !/
 // when question is wrong, take time away and display wrong
-// when time is up, display game over screen with form with 1 dropdown that for name
-// save name in local storage
+// when time is up, display game over screen with form with 1 dropdown that for name!
+// save name in local storage!
 // include names in high score page
-// button to clear memory.
 
 // Variables:
 var seconds = 75;
@@ -68,7 +67,6 @@ var question4 = {
 
 // Functions:
 
-localStorage.getItem(NameValue)
 
 function setTime() {
     time.textContent = seconds
@@ -84,7 +82,7 @@ function setTime() {
         scorescreen.setAttribute("style", "display: block")
       }
   
-    }, 100);
+    }, 1000);
   }
 // Modified from activity  04-09
 
@@ -102,12 +100,20 @@ startBtn.addEventListener("click", function() {
 })
 
 function questionGame() {
-  
-
     for (i = 0; i < questionArray.length; i++) {
-        console.log("questionarray");
+        
+        // set variable? so that questionArray actually pulls out questions
+        // set each point of the selected questionObject on its button
+        // create if else syntax so that a click on the false answer = wrong dialogue,time being taken out,
+        // else everything is fine 
+        // any answer quiz moves forward regardless
+        // 
+        // flag event so that on question 4, quiz transitions to game over screen and timer stops.
+        // time stop = clearInterval(timerInterval) method
+        
 }}
 submitScore.addEventListener("click", function(event) {
 event.preventDefault();
 localStorage.setItem("Name Value", NameValue.value,);
+localStorage.setItem("Hi-Score", seconds)
 })
