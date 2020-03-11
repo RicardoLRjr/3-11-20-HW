@@ -22,8 +22,8 @@
   <body>
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">Coding Challenge!</span>
-      <span class="navbar-text" id="score">
-        Time + <var>seconds left</var>
+      <span class="navbar-text" id="time">
+        
       </span>
     </nav>
     <main class="container">
@@ -49,11 +49,36 @@
       <section class="row">
         <section class="column">
           <section id="question-div">
-          
+            <button id="question-1" type="button" class="btn btn-primary">
+              
+            </button>
+            <button id="question-2" type="button" class="btn btn-primary">
+              
+            </button>
+            <button id="question-3" type="button" class="btn btn-primary">
+              
+            </button>
+            <button id="question-4" type="button" class="btn btn-primary">
+              
+            </button>
           </section>
           <div id="correct-wrong">
-
+            
           </div>
+        </section>
+        <section class="row" id="score-screen">
+          <section class="column">
+            <p> Game Over!
+            </p>
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name Here</label>
+                <input type="text" class="form-control" id="exampleNameInput" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">Please place your name above</small>
+                <button type="submit" id="score-submit" class="btn btn-primary">Submit Name</button>
+              </div>
+              </form>
+          </section>
         </section>
       </section>
     </main>
