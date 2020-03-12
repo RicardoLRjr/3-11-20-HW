@@ -47,10 +47,10 @@ var startBtn = document.getElementById("start-button");
 // refers to the start button
 var startPage = document.getElementById("start-page");
 // refers to the start page
-var questionDiv1 = document.getElementById("question-div");
-var questionDiv2 = document.getElementById("question-div");
-var questionDiv3 = document.getElementById("question-div");
-var questionDiv4 = document.getElementById("question-div");
+var questionDiv1 = document.getElementById("question-div1");
+var questionDiv2 = document.getElementById("question-div2");
+var questionDiv3 = document.getElementById("question-div3");
+var questionDiv4 = document.getElementById("question-div4");
 // refers to the divs containing the question elements
 var hiddenDiv = document.getElementById("correct-wrong");
 // refers to the div containing the correct/wrong dialogue
@@ -74,7 +74,7 @@ function setTime() {
       seconds--;
       time.textContent = "Time: " + seconds;
   
-      if(seconds === 0) {
+      if(seconds < 1) {
         clearInterval(timerInterval);
         console.log("time ran out!");
         questionDiv1.setAttribute("style", "display: none")
@@ -83,11 +83,34 @@ function setTime() {
         questionDiv4.setAttribute("style", "display: none")
         hiddenDiv.setAttribute("style", "display: none") 
         scorescreen.setAttribute("style", "display: block")
+        localStorage.setItem("Hi-Score", 0)
       }
   
     }, 1000);
   }
 // Modified from activity  04-09
+
+
+
+
+function timerSubtract() {
+    if (seconds < 10) {
+        return
+    }
+    else {
+seconds -= 10;
+}
+
+}
+
+function timerStop(){
+    var timerInterval = setInterval(function() {
+        time.textContent = "Time: " + seconds});
+    localStorage.setItem("Hi-Score", seconds)
+    clearInterval(timerInterval);
+
+
+    }
 
 startBtn.addEventListener("click", function() {
     startPage.setAttribute("style", "display: none");
@@ -99,13 +122,6 @@ startBtn.addEventListener("click", function() {
     question1();
     
 })
-
-
-function timerSubtract() {
-seconds -= 10;
-
-
-}
 
 function question1() {
     var questionTitle = document.createElement('h2');
@@ -148,8 +164,8 @@ function question1() {
 
 function question2() {
     questionDiv1.setAttribute("style", "display: none")
-    
     questionDiv2.setAttribute("style", "display: block")
+
     var questionTitle = document.createElement('h2');
     questionTitle.textContent = questionsArr[1].question;
     questionDiv2.append(questionTitle);
@@ -171,21 +187,27 @@ function question2() {
     questionDiv2.append(questionBox4)
 
     questionBox3.addEventListener("click", function() {
-        hiddenDiv.textContent = "Correct!"}
-        )
+        hiddenDiv.textContent = "Correct!"
+        question3();})
     questionBox1.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-        timerSubtract();})
+        timerSubtract();
+        question3();})
     questionBox2.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-        timerSubtract();})
+        timerSubtract();
+        question3();})
     questionBox4.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-    timerSubtract();})
+    timerSubtract();
+    question3();})
 }
 
 
 function question3() {
+    questionDiv2.setAttribute("style", "display: none")
+    questionDiv3.setAttribute("style", "display: block")
+
     var questionTitle = document.createElement('h2');
     questionTitle.textContent = questionsArr[2].question;
     questionDiv3.append(questionTitle);
@@ -207,20 +229,27 @@ function question3() {
     questionDiv3.append(questionBox4)
 
     questionBox3.addEventListener("click", function() {
-        hiddenDiv.textContent = "Correct!"})
+        hiddenDiv.textContent = "Correct!";
+        question4();})
     questionBox2.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-        timerSubtract();})
+        timerSubtract();
+        question4();})
     questionBox1.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-        timerSubtract();})
+        timerSubtract();
+        question4();})
     questionBox4.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-    timerSubtract();})
+    timerSubtract();
+    question4();})
 }
 
 
 function question4() {
+    questionDiv3.setAttribute("style", "display: none")
+    questionDiv4.setAttribute("style", "display: block")
+
     var questionTitle = document.createElement('h2');
     questionTitle.textContent = questionsArr[3].question;
     questionDiv4.append(questionTitle);
@@ -242,23 +271,42 @@ function question4() {
     questionDiv4.append(questionBox4)
 
     questionBox3.addEventListener("click", function() {
-        hiddenDiv.textContent = "Correct!"})
+        hiddenDiv.textContent = "Correct!"
+        questionDiv4.setAttribute("style", "display: none");
+        hiddenDiv.setAttribute("style", "display: none");
+        scorescreen.setAttribute("style", "display: block");
+        timerStop();}
+        )
     questionBox2.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-        timerSubtract();})
+        timerSubtract();
+        questionDiv4.setAttribute("style", "display: none");
+        hiddenDiv.setAttribute("style", "display: none");
+        scorescreen.setAttribute("style", "display: block");
+        timerStop();})
     questionBox1.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-        timerSubtract();})
+        timerSubtract();
+        questionDiv4.setAttribute("style", "display: none");
+        hiddenDiv.setAttribute("style", "display: none");
+        scorescreen.setAttribute("style", "display: block");
+        timerStop();})
     questionBox4.addEventListener("click", function() {
         hiddenDiv.textContent ="Wrong!";
-    timerSubtract();})
+    timerSubtract();
+    questionDiv4.setAttribute("style", "display: none");
+    hiddenDiv.setAttribute("style", "display: none");
+    scorescreen.setAttribute("style", "display: block")
+    ;
+timerStop();})
 }
 
 
 submitScore.addEventListener("click", function(event) {
 event.preventDefault();
 localStorage.setItem("Name Value", NameValue.value,);
-localStorage.setItem("Hi-Score", seconds)
+scorescreen.setAttribute("style", "display: none")
+
 })
 
 
