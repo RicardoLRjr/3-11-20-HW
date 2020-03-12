@@ -14,7 +14,17 @@ display: none;
 
 }
 
+#Results{
+display: none;
+
+}
+
 .container{
 align-items: center;
+
+}
+
+.p {
+text-align:  center;
 
 }
