@@ -47,8 +47,11 @@ var startBtn = document.getElementById("start-button");
 // refers to the start button
 var startPage = document.getElementById("start-page");
 // refers to the start page
-var questionDiv = document.getElementById("question-div");
-// refers to the div containing the question elements
+var questionDiv1 = document.getElementById("question-div");
+var questionDiv2 = document.getElementById("question-div");
+var questionDiv3 = document.getElementById("question-div");
+var questionDiv4 = document.getElementById("question-div");
+// refers to the divs containing the question elements
 var hiddenDiv = document.getElementById("correct-wrong");
 // refers to the div containing the correct/wrong dialogue
 var scorescreen = document.getElementById("score-screen")
@@ -74,7 +77,10 @@ function setTime() {
       if(seconds === 0) {
         clearInterval(timerInterval);
         console.log("time ran out!");
-        questionDiv.setAttribute("style", "display: none")
+        questionDiv1.setAttribute("style", "display: none")
+        questionDiv2.setAttribute("style", "display: none")
+        questionDiv3.setAttribute("style", "display: none")
+        questionDiv4.setAttribute("style", "display: none")
         hiddenDiv.setAttribute("style", "display: none") 
         scorescreen.setAttribute("style", "display: block")
       }
@@ -86,39 +92,167 @@ function setTime() {
 startBtn.addEventListener("click", function() {
     startPage.setAttribute("style", "display: none");
 
-    questionDiv.setAttribute("style", "display: block");
+    questionDiv1.setAttribute("style", "display: block");
     hiddenDiv.setAttribute("style", "display: block");
 
-    // questionA.textContent = TestA
-    // questionB.textContent = TestB
-    // questionC.textContent = TestC
-    // questionD.textContent = TestD
     setTime();
     question1();
     
 })
 
-function checkAnswer(){
+
+function timerSubtract() {
+seconds -= 10;
 
 
 }
 
 function question1() {
     var questionTitle = document.createElement('h2');
-    questionTitle.textContent = questionsArr[i].question;
-    questionDiv.append(questionTitle);
-    for (i = 0; i < questionsArr[i].answers.length; i++) {
-        console.log(questionTitle.textContent)
-        // set variable? so that questionArray actually pulls out questions
-        // set each point of the selected questionObject on its button
-        // create if else syntax so that a click on the false answer = wrong dialogue,time being taken out,
-        // else everything is fine 
-        // any answer quiz moves forward regardless
-        // 
-        // flag event so that on question 4, quiz transitions to game over screen and timer stops.
-        // time stop = clearInterval(timerInterval) method
-        
-}}
+    questionTitle.textContent = questionsArr[0].question;
+    questionDiv1.append(questionTitle);
+    var questionBox1 = document.createElement("button");
+    questionBox1.classList.add("btn-primary");
+    questionBox1.textContent = questionsArr[0].answers[0]
+    questionDiv1.append(questionBox1)
+    var questionBox2 = document.createElement("button")
+    questionBox2.classList.add("btn-primary");
+    questionBox2.textContent = questionsArr[0].answers[1]
+    questionDiv1.append(questionBox2)
+    var questionBox3 = document.createElement("button")
+     questionBox3.classList.add("btn-primary");
+    questionBox3.textContent = questionsArr[0].answers[2]
+    questionDiv1.append(questionBox3)
+    var questionBox4 = document.createElement("button")
+    questionBox4.classList.add("btn-primary");
+    questionBox4.textContent = questionsArr[0].answers[3]
+    questionDiv1.append(questionBox4)
+
+    questionBox1.addEventListener("click", function() {
+        hiddenDiv.textContent = "Correct!";
+    question2();})
+    questionBox2.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();
+        question2();})
+    questionBox3.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();
+        question2();})
+    questionBox4.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+    timerSubtract();
+    question2();})
+    
+}
+
+function question2() {
+    questionDiv1.setAttribute("style", "display: none")
+    
+    questionDiv2.setAttribute("style", "display: block")
+    var questionTitle = document.createElement('h2');
+    questionTitle.textContent = questionsArr[1].question;
+    questionDiv2.append(questionTitle);
+    var questionBox1 = document.createElement("button");
+    questionBox1.classList.add("btn-primary");
+    questionBox1.textContent = questionsArr[1].answers[0]
+    questionDiv2.append(questionBox1)
+    var questionBox2 = document.createElement("button")
+    questionBox2.classList.add("btn-primary");
+    questionBox2.textContent = questionsArr[1].answers[1]
+    questionDiv2.append(questionBox2)
+    var questionBox3 = document.createElement("button")
+     questionBox3.classList.add("btn-primary");
+    questionBox3.textContent = questionsArr[1].answers[2]
+    questionDiv2.append(questionBox3)
+    var questionBox4 = document.createElement("button")
+    questionBox4.classList.add("btn-primary");
+    questionBox4.textContent = questionsArr[1].answers[3]
+    questionDiv2.append(questionBox4)
+
+    questionBox3.addEventListener("click", function() {
+        hiddenDiv.textContent = "Correct!"}
+        )
+    questionBox1.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();})
+    questionBox2.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();})
+    questionBox4.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+    timerSubtract();})
+}
+
+
+function question3() {
+    var questionTitle = document.createElement('h2');
+    questionTitle.textContent = questionsArr[2].question;
+    questionDiv3.append(questionTitle);
+    var questionBox1 = document.createElement("button");
+    questionBox1.classList.add("btn-primary");
+    questionBox1.textContent = questionsArr[2].answers[0]
+    questionDiv3.append(questionBox1)
+    var questionBox2 = document.createElement("button")
+    questionBox2.classList.add("btn-primary");
+    questionBox2.textContent = questionsArr[2].answers[1]
+    questionDiv3.append(questionBox2)
+    var questionBox3 = document.createElement("button")
+     questionBox3.classList.add("btn-primary");
+    questionBox3.textContent = questionsArr[2].answers[2]
+    questionDiv3.append(questionBox3)
+    var questionBox4 = document.createElement("button")
+    questionBox4.classList.add("btn-primary");
+    questionBox4.textContent = questionsArr[2].answers[3]
+    questionDiv3.append(questionBox4)
+
+    questionBox3.addEventListener("click", function() {
+        hiddenDiv.textContent = "Correct!"})
+    questionBox2.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();})
+    questionBox1.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();})
+    questionBox4.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+    timerSubtract();})
+}
+
+
+function question4() {
+    var questionTitle = document.createElement('h2');
+    questionTitle.textContent = questionsArr[3].question;
+    questionDiv4.append(questionTitle);
+    var questionBox1 = document.createElement("button");
+    questionBox1.classList.add("btn-primary");
+    questionBox1.textContent = questionsArr[3].answers[0]
+    questionDiv4.append(questionBox1)
+    var questionBox2 = document.createElement("button")
+    questionBox2.classList.add("btn-primary");
+    questionBox2.textContent = questionsArr[3].answers[1]
+    questionDiv4.append(questionBox2)
+    var questionBox3 = document.createElement("button")
+     questionBox3.classList.add("btn-primary");
+    questionBox3.textContent = questionsArr[3].answers[2]
+    questionDiv4.append(questionBox3)
+    var questionBox4 = document.createElement("button")
+    questionBox4.classList.add("btn-primary");
+    questionBox4.textContent = questionsArr[3].answers[3]
+    questionDiv4.append(questionBox4)
+
+    questionBox3.addEventListener("click", function() {
+        hiddenDiv.textContent = "Correct!"})
+    questionBox2.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();})
+    questionBox1.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+        timerSubtract();})
+    questionBox4.addEventListener("click", function() {
+        hiddenDiv.textContent ="Wrong!";
+    timerSubtract();})
+}
 
 
 submitScore.addEventListener("click", function(event) {
@@ -126,3 +260,6 @@ event.preventDefault();
 localStorage.setItem("Name Value", NameValue.value,);
 localStorage.setItem("Hi-Score", seconds)
 })
+
+
+
